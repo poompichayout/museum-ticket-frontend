@@ -6,11 +6,13 @@ const PurchaseHistoryTable = ({ isFetched, histories }) => {
   return (
     <Table
       aria-label="Purchase history table"
+      color="primary"
       css={{
         height: "auto",
         minWidth: "100%",
+        backgroundColor: "$background",
+        transitionDuration: '1s'
       }}
-      containerCss
       selectionMode="single"
     >
       <Table.Header>

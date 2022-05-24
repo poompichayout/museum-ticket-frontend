@@ -40,14 +40,20 @@ const Header = () => {
         position: "sticky",
         top: 0,
         backdropFilter: "saturate(180%) blur(10px)",
-        zIndex: 100,
+        zIndex: 3000,
         height: 76,
       }}
     >
       <Col>
         <Link to="/admin">
           <NextUILink as="span" color="$text">
-            <Text h3 weight={"bold"}>
+            <Text
+              h3
+              weight={"bold"}
+              css={{
+                textGradient: "45deg, $blue500 -20%, $pink500 50%",
+              }}
+            >
               {isMobile ? "Admin" : "Donjai All Museum Admin"}
             </Text>
           </NextUILink>

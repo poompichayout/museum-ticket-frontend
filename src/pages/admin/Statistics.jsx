@@ -51,7 +51,7 @@ const Statistics = () => {
   return (
     <Container fluid>
       <Text h2>Statistics</Text>
-      <Container fluid gap={0}>
+      <Container fluid gap={0} css={{ mt: 10 }}>
         <Row>
           {days.map((day) => (
             <React.Fragment key={day}>

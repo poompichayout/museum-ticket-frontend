@@ -4,8 +4,11 @@ import { faFacebook, faGoogle, faLinkedin } from "@fortawesome/free-brands-svg-i
 import { Formik } from 'formik';
 import { useMutation } from 'react-query';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 function SignIn() {
+    const navigate = useNavigate();
     const mutation = useMutation((payload) => {
         return axios.post('/signin/basic', payload).then(res => res.data);
     }, {
@@ -13,6 +16,7 @@ function SignIn() {
             localStorage.setItem('tokens', data.data.tokens);
             localStorage.setItem('authenticate', true);
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + data.data.tokens;
+            navigate('/');
         },
     });
     return (
@@ -31,7 +35,6 @@ function SignIn() {
                         <Formik 
                             initialValues={{ email: '', password: '' }}
                             onSubmit={(values, { setSubmitting }) => {
-                                console.log(values);
                                 mutation.mutate(values);
                                 setSubmitting(false);
                             }}>
@@ -45,7 +48,7 @@ function SignIn() {
                         }) => (
                             <form onSubmit={handleSubmit} style={{ margin: '0 auto' }}>
                                 <div className='row mb-2 justify-content-center'>
-                                    <div className="col-8 mb-2"><input type="text" name="email" placeholder='Email' onChange={handleChange} onBlur={handleBlur} value={values.email}className='form-control'/></div>
+                                    <div className="col-8 mb-2"><input type="text" name="email" placeholder='Email' onChange={handleChange} onBlur={handleBlur} value={values.email} className='form-control'/></div>
                                     <div className="col-8 mb-2"><input type="password" name="password" placeholder='Password' className='form-control' onChange={handleChange} onBlur={handleBlur} value={values.password}/></div>
                                 
                                     {mutation.isError && (
@@ -70,7 +73,7 @@ function SignIn() {
                     <div className='row text-center justify-content-center hello'>
                         <div className='col-12 font-25 font-w-500 mt-5'>Welcome back!</div>
                         <div className='col-8 font-12 mb-4'>To keep connected with us please login with your personal info</div>
-                        <div className='col-12'><Button className='px-5'>Sign up</Button></div>
+                        <div className='col-12'><Link to="/signup"><Button className='px-5'>Sign up</Button></Link></div>
                         <div className='col-12 mt-auto text-right font-rufi font-08'>DONJAI ALL</div>
                     </div>
                 </div>

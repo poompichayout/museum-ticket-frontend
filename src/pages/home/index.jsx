@@ -1,6 +1,8 @@
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router";
 
 function HomePage() {
+  const navigate = useNavigate();
   return (
     <div className="main">
       <header className="main-header mt-5">
@@ -18,7 +20,14 @@ function HomePage() {
       <div className="text-white col-md-3 mx-auto py-2 font-big">
         Open time: Tuesday - Sunday (10:00 - 20:00)
       </div>
-      <Button variant="book">Book ticket</Button>
+      <Button
+        variant="book"
+        onClick={() => {
+          navigate("/booking");
+        }}
+      >
+        Book ticket
+      </Button>
     </div>
   );
 }

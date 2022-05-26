@@ -1,5 +1,4 @@
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
 import { NextUIProvider, createTheme } from "@nextui-org/react";
 import axios from "axios";
 import RouteProvider from "./utils/Routes";
@@ -19,7 +18,10 @@ const { theme } = createTheme({
   },
 });
 
-axios.defaults.baseURL = "http://localhost:8080/api/v1";
+axios.defaults.baseURL =
+  process.env.NODE_ENV === "production"
+    ? "https://api.museum.oasurastudio.live/api/v1"
+    : "http://localhost:8080/api/v1";
 
 export default function App() {
   return (
@@ -28,7 +30,6 @@ export default function App() {
         {/* routing */}
         <RouteProvider />
       </NextUIProvider>
-      <ReactQueryDevtools />
     </QueryClientProvider>
   );
 }

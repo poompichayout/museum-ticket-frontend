@@ -6,7 +6,6 @@ const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   const checkLoggedIn = () => {
     return new Promise((resolve) => {
@@ -27,9 +26,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const check = async () => {
-      setLoading(true);
       await checkLoggedIn();
-      setLoading(false);
     };
     check();
   }, []);
@@ -43,7 +40,7 @@ export const AuthProvider = ({ children }) => {
   };
   
   return (
-    <AuthContext.Provider value={{ user, login, logout, loading }}>
+    <AuthContext.Provider value={{ user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

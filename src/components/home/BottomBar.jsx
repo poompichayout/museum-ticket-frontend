@@ -18,24 +18,6 @@ function BottomBar() {
                         <div className='col'><a href='#'>Resources</a></div>
                         <div className='col'><a href='#'>Company</a></div>
                     </div>
-                    <div className='row'>
-                        <div className='col'><a href='#'>Product</a></div>
-                        <div className='col'><a href='#'>Features</a></div>
-                        <div className='col'><a href='#'>Resources</a></div>
-                        <div className='col'><a href='#'>Company</a></div>
-                    </div>
-                    <div className='row'>
-                        <div className='col'><a href='#'>Product</a></div>
-                        <div className='col'><a href='#'>Features</a></div>
-                        <div className='col'><a href='#'>Resources</a></div>
-                        <div className='col'><a href='#'>Company</a></div>
-                    </div>
-                    <div className='row'>
-                        <div className='col'><a href='#'>Product</a></div>
-                        <div className='col'><a href='#'>Features</a></div>
-                        <div className='col'><a href='#'>Resources</a></div>
-                        <div className='col'><a href='#'>Company</a></div>
-                    </div>
                 </div>
             </div>
     )

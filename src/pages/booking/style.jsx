@@ -66,29 +66,28 @@ export const ContentRight = style.ul`
     flex-wrap: wrap;
 `;
 
-export const Selectbutton = style.div`
+export const NotSelectbutton = style.button`
     border-radius: 5px; 
-    background-color: #E37222;
+    background-color: ${props => props.disabled? "#ff6c5f": props.active ? "#E37222":"#FFFFFF"};
     width: 10%;
     padding: 0.5em;
     text-align: center;
     margin-top: 1em;
-    color: white;
-    margin-right: 1em;
-`;
-
-export const NotSelectbutton = style.div`
-    border-radius: 5px; 
-    background-color: #FFFFFF;
-    width: 10%;
-    padding: 0.5em;
-    text-align: center;
-    margin-top: 1em;
-    color: #E37222;
-    border-color: #E37222;
+    color: ${props => props.disabled? "#FFFFFF": props.active ? "#FFFFFF":"#E37222"};
+    border-color:  ${props => props.disabled? "#E24E42": "#E37222"};
     border-style: solid;
     border-width: 1px;
     margin-right: 1em;
+
+    &:hover {
+        background-color: #E37222;
+        color: white;
+    }
+
+    &:active {
+        background-color: #E37222;
+        color: white;
+    }
 `;
 
 export const Timeclosebutton = style.div`
@@ -143,10 +142,11 @@ export const Backbutton = style.div`
 
 export const Nextbutton = style.div`
     border-radius: 10px; 
-    background-color: #E37222;
+    background-color: ${props => props.disabled ? "#F4F2F2":"#E37222"};
     width: 20%;
     text-align: center;
     color: white;
+    border-color: ${props => props.disabled ? "black":"#E37222"};
     margin-top: 4em;
     padding: 0.5em;
 `;

@@ -10,7 +10,8 @@ import {
   SchedulePage,
   StatisticsPage,
   TicketListPage,
-  TicketPage
+  TicketPage,
+  BookingPage
 } from "../pages";
 import { RequireAdminAuth, RequireUserAuth } from './RequiredAuth';
 
@@ -19,6 +20,7 @@ const RouteProvider = () => {
 	<Routes>
 		<Route path="/" element={<HomeLayout />} >
 			<Route path="/" element={<HomePage />} />
+			<Route path="/booking" element={<BookingPage />} />
 			<Route path="/signin" element={<SigninPage />} />
 			<Route path="/signup" element={<SignupPage />} />
 		</Route>

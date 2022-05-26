@@ -24,6 +24,9 @@ function TopBar() {
                             <StyledLink to='/'>Home</StyledLink>
                         </Nav.Link>
                         <Nav.Link as="span">
+                            <StyledLink to='/booking'>Book ticket</StyledLink>
+                        </Nav.Link>
+                        <Nav.Link as="span">
                             <StyledLink to='/admin'>Admin</StyledLink>
                         </Nav.Link>
                         {!auth.user && <>

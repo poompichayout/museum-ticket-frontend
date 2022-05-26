@@ -6,3 +6,4 @@ export { default as SigninPage } from './signin/index';
 export { default as SignupPage } from './signup/index';
 export { default as TicketListPage } from './account/TicketList';
 export { default as TicketPage } from './account/Ticket';
+export { default as BookingPage } from './booking/Booking';

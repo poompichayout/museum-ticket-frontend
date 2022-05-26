@@ -30,8 +30,10 @@ import { useQuery } from "react-query";
 import axios from "axios";
 import moment from "moment";
 import { Image, Loading } from "@nextui-org/react";
+import { useNavigate } from "react-router";
 
 const Booking = () => {
+  const navigate = useNavigate();
   const [selectedDate, setDate] = useState(new Date());
   const [selectedTime, setTime] = useState("");
   const [ticketCount, setTicketCount] = useState(1);
@@ -153,7 +155,16 @@ const Booking = () => {
                   />
                 </Icon4>
                 <Backbutton>Back</Backbutton>
-                <Nextbutton disabled={selectedTime === ""}>Next</Nextbutton>
+                <Nextbutton
+                  disabled={selectedTime === ""}
+                  onClick={() => {
+                    navigate("/booking/2", {
+                      state: { selectedDate, selectedTime, ticketCount },
+                    });
+                  }}
+                >
+                  Next
+                </Nextbutton>
               </Row>
             </ContentRight>
           </Row>

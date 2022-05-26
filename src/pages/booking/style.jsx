@@ -125,10 +125,10 @@ export const Numberofticket = style.div`
     margin-top: 3.2em;
 `;
 
-export const Backbutton = style.div`
+export const Backbutton = style.button`
     border-radius: 10px; 
     background-color: #FFFFFF;
-    width: 20%;
+    width: 100px;
     text-align: center;
     color: #E37222;
     border-color: #E37222;
@@ -140,15 +140,17 @@ export const Backbutton = style.div`
     padding: 0.5em;
 `;
 
-export const Nextbutton = style.div`
+export const Nextbutton = style.button`
     border-radius: 10px; 
     background-color: ${props => props.disabled ? "#F4F2F2":"#E37222"};
-    width: 20%;
+    width: 100px;
     text-align: center;
     color: white;
     border-color: ${props => props.disabled ? "black":"#E37222"};
     margin-top: 4em;
     padding: 0.5em;
+    border-style: solid;
+    border-width: 1px;
 `;
 
 export const Warning = style.div`

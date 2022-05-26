@@ -19,14 +19,16 @@ import {
   Text,
 } from "@nextui-org/react";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { useParams } from "react-router";
 
 const Ticket = () => {
   const isMobile = useMediaQuery(650);
+  const params = useParams();
   const { data, isFetching, isFetched } = useQuery(
     "user-ticket-id",
     () => {
       return axios
-        .get("/profile/ticketByID/T22-00001")
+        .get("/profile/ticketByID/"+params.id)
         .then((res) => res.data.data.ticket);
     },
     {

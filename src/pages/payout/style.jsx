@@ -1,4 +1,5 @@
 import style from "styled-components";
+import { Text, Container } from "@nextui-org/react";
 
 export const Title = style.div`
     display: flex;
@@ -52,36 +53,32 @@ export const Row = style.li`
     width:100%;
 `;
 
-export const Subheading = style.text`
+export const Subheading = style(Text)`
     font-size: 1.25em;
     color: #727171;
     font-weight: bold;
 `;
 
-export const SubheadingBox = style.ul`
-    margin-left: 3em;
+export const SubheadingBox = style.div`
     margin-top: 1.5em;
 `;
 
 export const ContentLeft = style.ul`
-    margin-left: 5em;
-    width: 15%;
     font-size: 1em;
     color: #727171;
 `;
 
 export const ContentRight = style.ul`
-    width: 65%;
     font-size: 1em;
     margin-left: 10em;
 `;
 
-export const Normaltext = style.text`
+export const Normaltext = style(Text)`
     font-size: 1em;
     color: #727171;
 `;
 
-export const Highligttext = style.text`
+export const Highligttext = style(Text)`
     font-size: 1em;
     color: #E24E42;
 `;
@@ -145,9 +142,8 @@ export const Formforinfo = style.input`
     border-bottom: 2px solid black;
 `;
 
-export const Paymentbox = style.div`
+export const Paymentbox = style(Container)`
     text-align: center;
-    width: 78%;
     background-color: #f2f2f2;
     padding-top: 2em;
     padding-bottom: 1em;
@@ -158,24 +154,26 @@ export const Paymentbox = style.div`
 export const Paymentsmallbox = style.ul`
     border-radius: 10px; 
     text-align: center;
-    width: 10%;
-    background-color: #FFFFFF;
+    width: 120px;
+    height: 150px;
+    background-color: ${props => props.active ? "#0072F5":"#FFFFFF"};
     padding: 1em;
     border: none;
     display: inline-block;
     margin-right: 1em;
-    color: #939393;
+    color: ${props => props.active ? "white":"#939393"};
+    cursor: pointer;
+
+    @media only screen and (max-width: 650px) {
+        width: 80px;
+        height: 80px;
+    }
 `;
 
-export const Imginsmallbox = style.ul`
-    text-align: center;
-    padding: 0.5em;
-`;
-
-export const Backbutton = style.div`
+export const Backbutton = style.button`
     border-radius: 10px; 
     background-color: #FFFFFF;
-    width: 25%;
+    width: 100px;
     text-align: center;
     color: #E37222;
     border-color: #E37222;
@@ -188,21 +186,18 @@ export const Backbutton = style.div`
     padding: 0.5em;
 `;
 
-export const Nextbutton = style.div`
+export const Nextbutton = style.button`
     border-radius: 10px; 
     background-color: #E37222;
-    width: 25%;
+    border-color: #E37222;
+    width: 100px;
+    border-style: solid;
+    border-width: 1px;
     text-align: center;
     color: white;
     margin-top: 2em;
     margin-bottom: 2em;
     padding: 0.5em;
-`;
-
-export const ButtonBox = style.div`
-    display: flex;
-    width: 50%;
-    margin-left: 60em;
 `;
 
 export const Icon1 = style.div`

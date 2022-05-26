@@ -10,7 +10,7 @@ function TopBar() {
                 <Link className='nav-link' to='/'>Home</Link>
                 <Link className='nav-link' to='/about'>About us</Link>
                 <Link className='nav-link' to='/book'>Book ticket</Link>
-                <Link className='nav-link' to='/contact'>Contact</Link>
+                <Link className='nav-link' to='/admin'>Admin</Link>
                 <Link className='nav-link' to='/signin'>Log in</Link>
                 <Link className='btn btn-sign-up' to='/signup'>Sign up</Link>
             </Container>

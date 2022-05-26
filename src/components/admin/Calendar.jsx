@@ -6,7 +6,7 @@ import moment from "moment";
 import PropTypes from "prop-types";
 import EditDayModal from "./EditDayModal";
 
-const Calendar = ({ days, month, year }) => {
+const Calendar = ({ days, month, year, refetch }) => {
   const [visible, setVisible] = React.useState(false);
   const [clickedDate, setDate] = React.useState(new Date(year, month));
   const [defaultStatus, setStatus] = React.useState({
@@ -98,6 +98,9 @@ const Calendar = ({ days, month, year }) => {
         }}
         date={clickedDate}
         defaultStatus={defaultStatus}
+        refetch={() => {
+          refetch();
+        }}
       />
     </React.Fragment>
   );

@@ -2,7 +2,6 @@ import {
   Col,
   Container,
   Row,
-  Spacer,
   Text,
   useBodyScroll,
   Link as NextUILink,
@@ -12,6 +11,8 @@ import React, { useEffect, useState } from "react";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   const location = useLocation();
@@ -72,29 +73,21 @@ const Header = () => {
                 Home
               </NextUILink>
             </Link>
-            <Spacer x={1} y={0} />
-            <AddResourceBtn />
           </Row>
         </Col>
       )}
       {isMobile && (
         <Col>
-          <Row justify="flex-end"></Row>
+          <Row justify="flex-end">
+            <Button
+              light
+              size="sm"
+              iconRight={<FontAwesomeIcon icon={faBars} />}
+            />
+          </Row>
         </Col>
       )}
     </Container>
-  );
-};
-
-const AddResourceBtn = () => {
-  return (
-    <Link to="/signin">
-      <Button
-        css={{ padding: "$6", minWidth: "min-content", borderRadius: "$pill" }}
-      >
-        Login
-      </Button>
-    </Link>
   );
 };
 

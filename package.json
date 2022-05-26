@@ -56,5 +56,11 @@
   "peerDependencies": {
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0"
+  },
+  "overrides": {
+    "autoprefixer": "10.4.5"
+  },
+  "resolutions": {
+    "autoprefixer": "10.4.5"
   }
 }

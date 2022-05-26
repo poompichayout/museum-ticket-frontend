@@ -1,11 +1,8 @@
-import { useRoutes } from "react-router-dom";
-import routes from "./routes";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from 'react-query/devtools'
-import axios from 'axios';
-import jwtDecode from 'jwt-decode';
-
+import { ReactQueryDevtools } from "react-query/devtools";
 import { NextUIProvider, createTheme } from "@nextui-org/react";
+import axios from "axios";
+import RouteProvider from "./utils/Routes";
 
 const queryClient = new QueryClient();
 
@@ -22,31 +19,15 @@ const { theme } = createTheme({
   },
 });
 
-axios.defaults.baseURL = 'http://localhost:8080/api/v1';
-const token = localStorage.getItem('tokens');
-if (token) {
-	const decodedToken = jwtDecode(token);
-	if (decodedToken.exp * 1000 < Date.now()) {
-		localStorage.removeItem('tokens');
-		localStorage.removeItem('authenticate');
-		delete axios.defaults.headers.common['Authorization'];
-    window.location.href = '/signin';
-	} else {
-		localStorage.setItem('authenticate', true);
-		axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-	}
-}
+axios.defaults.baseURL = "http://localhost:8080/api/v1";
 
 export default function App() {
-  const authenticate = JSON.parse(localStorage.getItem('authenticate')) === true;
-	const token = localStorage.getItem('tokens');
-  if (token) {
-    var admin = jwtDecode(token).roles.some(e => e.code === "ADMIN");
-  }
-  const routing = useRoutes(routes(authenticate, admin));
   return (
     <QueryClientProvider client={queryClient}>
-      <NextUIProvider theme={theme}>{routing}</NextUIProvider>
+      <NextUIProvider theme={theme}>
+        {/* routing */}
+        <RouteProvider />
+      </NextUIProvider>
       <ReactQueryDevtools />
     </QueryClientProvider>
   );

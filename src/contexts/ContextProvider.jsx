@@ -4,16 +4,6 @@ import axios from "axios";
 
 const AuthContext = createContext(null);
 
-const initialState = {
-  authenticate: false,
-  userData: {
-    email: "",
-    firstName: "",
-    lastName: "",
-    roles: [],
-  },
-};
-
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -23,7 +13,7 @@ export const AuthProvider = ({ children }) => {
       const tokens = localStorage.getItem("tokens");
       if (tokens && jwtDecode(tokens).exp * 1000 < Date.now()) {
         localStorage.removeItem("tokens");
-        setUser(initialState.userData);
+        setUser(null);
         delete axios.defaults.headers.common["Authorization"];
       } else {
         if (tokens) {

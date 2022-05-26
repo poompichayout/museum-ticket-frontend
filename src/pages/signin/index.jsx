@@ -21,7 +21,8 @@ function SignIn() {
     },
     {
       onSuccess: (data) => {
-        localStorage.setItem('tokens', data.data.tokens);
+        localStorage.setItem("tokens", data.data.tokens);
+        localStorage.setItem("user-data", JSON.stringify(data.data.user));
         auth.login(data.data.user);
         axios.defaults.headers.common["Authorization"] =
           "Bearer " + data.data.tokens;
@@ -35,7 +36,7 @@ function SignIn() {
         <div className="col"></div>
         <div className="col-4">
           <div className="row text-center create-account">
-            <div className="col-12 font-25 font-w-500 header pt-5">Sign in</div>
+            <div className="col-12 font-25 font-w-500 pt-5 pb-2">Sign in</div>
             <div className="col-12 d-flex justify-content-center mb-4">
               <div className="svg-border">
                 <FontAwesomeIcon icon={faFacebook} />

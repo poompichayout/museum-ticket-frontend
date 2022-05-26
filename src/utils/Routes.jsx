@@ -1,16 +1,18 @@
 import React from 'react'
 import { Route, Routes } from 'react-router'
+import { Navigate } from 'react-router-dom'
 
-import { AdminLayout, HomeLayout } from "../layouts";
+import { AdminLayout, HomeLayout, UserLayout } from "../layouts";
 import {
   HomePage,
   SigninPage,
   SignupPage,
-  DashboardPage,
   SchedulePage,
   StatisticsPage,
+  TicketListPage,
+  TicketPage
 } from "../pages";
-import { RequireAuth } from './RequiredAuth';
+import { RequireAdminAuth, RequireUserAuth } from './RequiredAuth';
 
 const RouteProvider = () => {
   return (
@@ -21,8 +23,13 @@ const RouteProvider = () => {
 			<Route path="/signup" element={<SignupPage />} />
 		</Route>
 
-		<Route path="/admin" element={<RequireAuth><AdminLayout /></RequireAuth>} >
-			<Route path="/admin/" element={<DashboardPage />} />
+		<Route path="/account" element={<RequireUserAuth><UserLayout /></RequireUserAuth>} >
+			<Route path="/account/" element={<TicketListPage />} />
+			<Route path="/account/ticket/:id" element={<TicketPage />} />
+		</Route>
+
+		<Route path="/admin" element={<RequireAdminAuth><AdminLayout /></RequireAdminAuth>} >
+			<Route path="/admin/" element={<Navigate to="/admin/statistics?range=1" />} />
 			<Route path="/admin/statistics" element={<StatisticsPage />} />
 			<Route path="/admin/schedule" element={<SchedulePage />} />
 		</Route>

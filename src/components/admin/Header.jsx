@@ -52,7 +52,7 @@ const Header = () => {
               h3
               weight={"bold"}
               css={{
-                textGradient: "45deg, $blue500 -20%, $pink500 50%",
+                textGradient: "45deg, $yellow600 20%, $yellow800 50%",
               }}
             >
               {isMobile ? "Admin" : "Donjai All Museum Admin"}

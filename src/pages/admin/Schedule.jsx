@@ -24,7 +24,7 @@ const Schedule = () => {
       .get(`/admin/schedule/${now.getFullYear()}/${now.getMonth() + 1}`)
       .then((res) => res.data);
   };
-  const { isFetched, data } = useQuery("dates", fetchDates);
+  const { isFetched, data, refetch } = useQuery("dates", fetchDates);
 
   const createDayInMonth = () => {
     var date = new Date(now.getFullYear(), now.getMonth(), 1);
@@ -146,7 +146,7 @@ const Schedule = () => {
             </Col>
           </Row>
         </Grid.Container>
-        <Calendar days={array} month={now.getMonth()} year={now.getFullYear()} />
+        <Calendar days={array} month={now.getMonth()} year={now.getFullYear()} refetch={refetch} />
       </Container>
     </Container>
   );

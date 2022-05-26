@@ -12,11 +12,15 @@ import moment from "moment";
 import { useMutation } from "react-query";
 import axios from "axios";
 
-const EditDayModal = ({ visible, closeHandler, date, defaultStatus }) => {
+const EditDayModal = ({ visible, closeHandler, date, defaultStatus, refetch }) => {
   const [status, setStatus] = React.useState(defaultStatus.status);
   const [time, setTime] = React.useState(defaultStatus.time ?? []);
   const mutation = useMutation((payload) => {
     return axios.post("/admin/schedule", payload).then((res) => res.data);
+  }, {
+    onSuccess: () => {
+      refetch();
+    }
   });
 
   useEffect(() => {
@@ -25,7 +29,6 @@ const EditDayModal = ({ visible, closeHandler, date, defaultStatus }) => {
   }, [date, defaultStatus]);
 
   const onApplied = () => {
-    console.log(time);
     // serialize data
     const days = time.map((t) => {
       const d = new Date(date);
@@ -59,7 +62,6 @@ const EditDayModal = ({ visible, closeHandler, date, defaultStatus }) => {
         }
       });
     }
-	console.log(days);
     mutation.mutate(days);
   };
 

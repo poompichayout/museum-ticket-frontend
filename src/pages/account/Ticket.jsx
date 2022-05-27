@@ -49,8 +49,8 @@ const Ticket = () => {
         my: 50,
         maxWidth: isMobile ? "100%" : "80vw",
         flexDirection: isMobile ? "column" : "row",
+        justifyContent: "center"
       }}
-      justify="space-around"
     >
       <Grid xs={12} sm={6} md={3}>
         <Card hoverable clickable css={{ height: "min-content" }}>
@@ -95,7 +95,9 @@ const Ticket = () => {
         </Card>
       </Grid>
 
-      <Grid xs={12} sm={6} md={9}>
+      {isMobile && <Spacer y={1} />}
+
+      <Grid xs={12} sm={3} md={3}>
         <Container>
           <Text b h2 css={{ color: "#E24E42" }}>
             My Ticket
